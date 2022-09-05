@@ -1,1 +1,1 @@
-ALX task 0.Where am i
+Display the contents list of your current directory.
