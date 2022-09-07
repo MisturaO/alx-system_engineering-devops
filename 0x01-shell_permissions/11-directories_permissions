@@ -1,0 +1,2 @@
+#!/bin/bash
+find /alx-system_engineering-devops -type d -exec chmod u=x, go=x {} \;
