@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod 755 /0x01-shell_permissions/hello
+chmod 755 /lx-system_engineering-devops/0x01-shell_permissions/hello
