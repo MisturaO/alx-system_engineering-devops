@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Stop the infinite loop in the file "4-to_infinity_and_beyond" using kill,
-#+ instead of ctr-C
+# Stop the infinite loop in the file "4-to_infinity_and_beyond" using "kill",
+#+ instead of "ctr-C"
 
 kill "$(pgrep -f ./4-to_infinity_and_beyond)"
