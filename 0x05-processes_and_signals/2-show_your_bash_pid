@@ -1,4 +1,4 @@
 i#!/usr/bin/env bash
 # Bash script that displays the bash pid
 
-ps auxf | grep bash
+ps auxf |grep bash
