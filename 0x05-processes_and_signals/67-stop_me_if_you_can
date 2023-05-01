@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-#  Bash script that terminates "4-to_infinity_and_beyond" process. Without
+#  Bash script that terminates "7-highlander" process. Without
 #+ using "kill" or "killall"
+# Sends a kill(Terminate .i.e SIGTERM) signal to the "trap"
+#+ in 7-highlander file
 
 pkill "./7-highlander" -f
