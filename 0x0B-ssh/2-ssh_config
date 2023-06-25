@@ -1,0 +1,6 @@
+# Client configuration file to connect to a server without typing a password.
+# ssh keys are stored in school
+
+Host *
+  IdentityFile ~/.ssh/school
+  PasswordAuthentication no
