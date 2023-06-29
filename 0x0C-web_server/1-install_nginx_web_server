@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #Script that Installs nginx web server on a new machine
+#the default index file contains the string "Hello World!"
 
 apt-get -y update
 apt-get -y install nginx
