@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#   Script that Installs nginx web server on a new machine
+#   the default index file contains the string "Hello World!"
+
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+service ngnix start
