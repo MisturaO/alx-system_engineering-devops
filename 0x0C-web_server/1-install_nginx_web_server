@@ -3,5 +3,5 @@
 #the ngnix default index file contains the string "Hello World!
 apt-get -y update
 apt-get -y install nginx
-echo 'Hello World!' > var/www/html/index.nginx-debian.html
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 service nginx start
