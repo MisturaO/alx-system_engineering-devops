@@ -7,3 +7,4 @@ echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 #redirects the page '/redirect_me' to the root page '/' in nginx default server
 sed -i '/server_name _;/a\\n\trewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
 service nginx restart
+service nginx restart
