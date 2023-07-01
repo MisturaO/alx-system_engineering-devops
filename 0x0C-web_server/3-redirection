@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Script that Installs nginx web server on a new machine
+#the ngnix default index file contains the string "Hello World!
+apt-get -y update
+apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+#redirects the page '/redirect_me' to the root page '/' in nginx default server
+sed -i '/server_name _;/a\\n\trewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
+service nginx start
