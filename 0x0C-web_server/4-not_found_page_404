@@ -11,5 +11,5 @@ echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 sed -i '/server_name _;/a\\n\trewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
 #error_page directive is used with error 404 and specified to dispaly on custom_404.html page.
 #When a 404 error occurs,the custom_404.html page is served by default along with it's content i echoed above.
-sed -i '/server_name _;/a\\n\terror_page 404 /custom_404.html' /etc/nginx/sites-available/default
+sed -i '/server_name _;/a\\n\terror_page 404 /custom_404.html;' /etc/nginx/sites-available/default
 service nginx start
