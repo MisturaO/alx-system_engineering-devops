@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#Configure Nginx so that its HTTP response contains a custom header
+
+apt-get -y update
+apt-get -y install nginx
+
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+#Added a custom header to the config file with the 'add_header' directive
+#The new header name is 'X-Served-By' and host name is stored in env var 'HOSTNAME'
+sed -i '/server_name _;/a\\n\tadd_header X-Served-By $HOSTNAME' /etc/nginx/sites-available/default
+service nginx start
