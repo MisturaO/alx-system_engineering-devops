@@ -15,7 +15,6 @@ frontend mistura_frontend
          balance roundrobin
          server 152432-web-01 3.90.81.72:80 check
          server 152432-web-02 3.85.148.246:80 check
- EOF
-
+EOF
 echo "Enabled=1" >> /etc/default/haproxy
- service haproxy start
+service haproxy start
