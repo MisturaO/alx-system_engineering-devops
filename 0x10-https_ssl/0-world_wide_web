@@ -21,7 +21,7 @@ display_domain_info ()
     fi
 
     # Loops through the values stored in var 'all_subdomains'
-    for sub in ${all_subdomains[@]}; do
+    for sub in "${all_subdomains[@]}"; do
         # Does a DNS lookup using 'dig' for each 'sub.domain' in the list, then extracts the "ANSWER SECTION:"
         # and the next line following it from the output of the 'dig' command using 'grep' and then 'awk' to print all
         # the columns in the 'grep' output.
