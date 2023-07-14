@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Displays information about sub-domains
+# Ignore shellcheck case SC2086
+# Usage: ./1-world_wide_web <domain> <subdomain>
+
+display_domain_info ()
+{
+    # Function to display information about subdomains
+
+    # Domain and subdomain CMD line values are stored here
+    domain="$1"
+    subdomain="$2"
+
+    # Checks if the var subdomain is empty, if it is empty, then store a list of subdomains in the var,
+    # and if it's not empty, store the values in 'subdomain' var to all_subdomains
+    if [[ -z "$subdomain" ]];
+    then
+        all_subdomains=("www" "lb-01" "web-01" "web-02")
+    else
+        all_subdomains=("$subdomain")
+    fi
+
+    # Loops through the values stored in var 'all_subdomains'
+    for sub in ${all_subdomains[@]}; do
+        # Does a DNS lookup using 'dig' for each 'sub.domain' in the list, then extracts the "ANSWER SECTION:"
+        # and the next line following it from the output of the 'dig' command using 'grep' and then 'awk' to print all
+        # the columns in the 'grep' output.
+        #Do: dig www.ojularimistura.tech --To get all 'dig' output 
+        output=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION:' | awk '{ print $0 }')
+
+        # If the var 'output' is not empty, then store the value at column 4 and 5 in var 'record_type' and 'destination'
+        if [[ -n "$output" ]]; then
+            record_type=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{ print $4 }')
+            destination=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{ print $5 }')
+            echo "The subdomain $sub.$domain is a $record_type record and points to $destination"
+        fi
+    done
+}
+
+#Function call with the expected CMD line arguments
+display_domain_info "$1" "$2"
