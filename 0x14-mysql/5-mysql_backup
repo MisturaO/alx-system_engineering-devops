@@ -8,7 +8,9 @@ day=$(date +"%d")
 month=$(date +"%m")
 year=$(date +"%Y")
 archive_file_name="$day-$month-$year.tar.gz"
+
 # Generates a MySQL dump and stores it inside 'backup.sql' file
+# i.e. it stores all the databases in the server into the backup.sql
 mysqldump -uroot -p"$1" --all-databases > backup.sql
 
 # Creates a tar.gz compressed archive of the backup.sql file
