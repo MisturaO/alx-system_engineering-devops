@@ -15,8 +15,6 @@ if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com/"
     # adds the user's ID to the endpoint url of the API users resource
     users = requests.get(base_url + "users/{}".format(user_id)).json()
-    # To parse the users names as a python dictionary and assign
-    # the dict objects to key later in the code
     # adds the user's ID to the endpoint url of the API todo resource
     todos = requests.get(base_url + "todos/",
                          params={"userId": user_id}).json()
