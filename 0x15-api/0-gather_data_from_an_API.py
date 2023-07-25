@@ -17,5 +17,5 @@ if __name__ == "__main__":
     completed_tasks = [todo.get("title") for todo in todos if
                        todo.get("completed") is True]
     print("Employee {} is done with tasks({}/{}):"
-          .format(users.get("name"), len("completed"), len("todos")))
+          .format(users.get("name"), len("completed_tasks"), len("todos")))
     [print("\t {}".format(title)) for title in completed_tasks]
