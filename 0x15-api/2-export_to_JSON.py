@@ -17,7 +17,7 @@ if __name__ == "__main__":
     users = requests.get(base_url + "users/{}".format(user_id)).json()
     # To parse the users names as a python dictionary and assign
     # the dict objects to key later in the code
-    username = users.get("username")
+    #username = users.get("username")
     # adds the user's ID to the endpoint url of the API todo resource
     todos = requests.get(base_url + "todos/",
                          params={"userId": user_id}).json()
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     with open("{}.json".format(user_id), "w") as jsonfile:
         # stores the required data into the json file(jsonfile)
         # as valid json properties and values
-        json.dump([{user_id: [{"task": todo.get("title"),
+        json.dump({user_id: [{"task": todo.get("title"),
                                "completed": todo.get("completed"),
-                               "username": username
-                               }]} for todo in todos], jsonfile)
+                               "username": users.get("username")
+                               } for todo in todos]}, jsonfile)
