@@ -15,6 +15,9 @@ if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com/"
     # adds the user's ID to the endpoint url of the API users resource
     users = requests.get(base_url + "users/{}".format(user_id)).json()
+    # To parse the users names as a python dictionary and assign
+    # the dict objects to key later in the code
+    username = users.get("username")
     # adds the user's ID to the endpoint url of the API todo resource
     todos = requests.get(base_url + "todos/",
                          params={"userId": user_id}).json()
@@ -26,5 +29,5 @@ if __name__ == "__main__":
         # as valid json properties and values
         json.dump([{user_id: [{"task": todo.get("title"),
                                "completed": todo.get("completed"),
-                               "username": users.get("username")
+                               "username": username
                                }]} for todo in todos], jsonfile)
