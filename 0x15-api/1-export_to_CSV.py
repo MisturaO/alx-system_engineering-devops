@@ -13,10 +13,10 @@ import sys
 if __name__ == "__main__":
     user_id = sys.argv[1]
     base_url = "https://jsonplaceholder.typicode.com/"
-    users = requests.get(base_url + "users/{}".format(sys.argv[1])).json()
+    users = requests.get(base_url + "users/{}".format(user_id)).json()
     username = users.get("username")
     todos = requests.get(base_url + "todos",
-                         params={"userId": sys.argv[1]}).json()
+                         params={"userId": user_id}).json()
 
     with open("{}.csv".format(user_id), 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
