@@ -12,9 +12,9 @@ def number_of_subscribers(subreddit):
         subreddit"""
 
     apiUrl = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
-    response = requests.get(apiUrl, header, allow_redirects=False)
+    response = requests.get(apiUrl, headers, allow_redirects=False)
 
     if response.status_code >= 300:
         return 0
