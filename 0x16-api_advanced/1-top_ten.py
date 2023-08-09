@@ -20,10 +20,10 @@ def top_ten(subreddit):
     response = requests.get(apiUrl, params=param,
                             headers=header, allow_redirects=False)
 
-    if response.status_code >= 300:
-        print('None')
-
     data = response.json().get('data')
 
-    [print(child.get('data').get('title')) for child in
-     data.get('children')]
+    if response.status_code >= 300:
+        print('None')
+    else:
+        [print(child.get('data').get('title')) for child in
+         data.get('children')]
