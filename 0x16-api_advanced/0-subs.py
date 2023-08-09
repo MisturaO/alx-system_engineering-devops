@@ -18,4 +18,5 @@ def number_of_subscribers(subreddit):
 
     if response.status_code >= 300:
         return 0
+    """.get('data').get('subscribers') handles cases where the data or subscribers keys might be missing."""
     return response.json().get('data').get('subscribers')
