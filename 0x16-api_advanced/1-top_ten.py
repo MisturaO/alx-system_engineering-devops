@@ -13,7 +13,7 @@ def top_ten(subreddit):
     Args:
         subreddit
     """
-    apiUrl = 'https://www.reddit.com/r/{}/top.json'.format(subreddit)
+    apiUrl = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     param = {
         "limit": 10
         }
