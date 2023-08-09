@@ -12,16 +12,17 @@ def top_ten(subreddit):
     Args:
         subreddit
     """
-    apiUrl = 'https://www.reddit.com/r/subreddit/top.json'.format(subreddit)
+    apiUrl = 'https://www.reddit.com/r/subreddit/hot.json'.format(subreddit)
     param = {"limit": 10}
     header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
     response = requests.get(apiUrl, params=param,
                             headers=header, allow_redirects=False)
-    data = response.json()
 
     if response.status_code >= 300:
         print('None')
 
+    data = response.json().get('data')
+
     [print(child.get('data').get('title')) for child in
-     data.get('data').get('children')]
+     data.get('children')]
