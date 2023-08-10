@@ -12,7 +12,7 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
         hot_list (list): List to store the titles of all hot articles.
         after (str): Token for pagination (optional).
         """
-    apiUrl = 'https://www.reddit.com/r/{subreddit}/hot.json'
+    apiUrl = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     param = {"count": count, "after": after, "limit": 100}
     header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
