@@ -5,7 +5,7 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=None, count=0):
     """
-    A recursive functions that returns a list containing 
+    A recursive functions that returns a list containing
     the titles of all hot articles for a given subreddit
     Args:
         subreddit (str): The name of the subreddit.
@@ -23,7 +23,6 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
                             allow_redirects=False, headers=header)
     # print(response.json())
 
-
     if response.status_code == 200:
         data = response.json().get("data")
         after = data.get("after")
@@ -34,6 +33,6 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
         if after is not None:
             return recurse(subreddit, hot_list, after, count)
     else:
-         return None
+        return None
 
     return hot_list
