@@ -9,7 +9,7 @@ server {
          # This directive sets the server's IP address as domain name
          server_name 3.90.81.72;
 
-         # 0x1A-application_server(Serves the route /airbnb-onepage/ from the project Airbnb_clone_v2)
+         # Serves the route /airbnb-onepage/ from the project Airbnb_clone_v2 (Task: - 2-app_server-nginx_config)
          location /airbnb-onepage/ {
                  proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
          }
