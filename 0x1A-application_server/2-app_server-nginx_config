@@ -1,0 +1,41 @@
+server {
+        # Listen on port 80
+         listen 80 default_server;
+         # listen on IPv6 address
+         listen [::]:80 default_server;
+
+         # This directive sets the server's IP address as domain name
+         server_name 3.90.81.72;
+
+         # 0x1A-application_server(Serves the route /airbnb-onepage/ from the project Airbnb_clone_v2)
+         location /airbnb-onepage/ {
+                 proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
+         }
+
+
+         root /var/www/html;
+
+         # Add index.php to the list if you are using PHP
+         index index.html index.htm index.nginx-debian.html;
+
+         server_name _;
+
+         location /hbnb_static/ {
+                 alias /data/web_static/current/;
+         }
+
+         # Customize HTTP response header
+         add_header X-Served-By $HOSTNAME;
+
+         # Sets 404 error page
+         error_page 404 /custom_404.html;
+
+         # rewrite directive
+         rewrite ^/redirect_me / permanent;
+
+         location / {
+                 # First attempt to serve request as file, then
+                 # as directory, then fall back to displaying a 404.
+                 try_files $uri $uri/ =404;
+         }
+}
