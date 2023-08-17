@@ -1,0 +1,58 @@
+# Configures Nginx to serve the route /airbnb-onepage/ from AirBnB_clone_v2 project.
+
+server {
+        # Listen on port 80
+         listen 80 default_server;
+         # listen on IPv6 address
+         listen [::]:80 default_server;
+
+         # This directive sets the server's IP address as domain name
+         server_name 3.90.81.72;
+
+         # Serves the route /airbnb-onepage/ from the project Airbnb_clone_v2 (Task: - 2-app_server-nginx_config)
+         location /airbnb-onepage/ {
+                 proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
+         }
+
+
+         # Serves the route /airbnb-dynamic/number_odd_or_even/ from the project Airbnb_clone_v2 (Task: - 3-app_server-nginx_config)
+         location /airbnb-dynamic/number_odd_or_even/ {
+                include proxy params;
+                proxy_pass http://0.0.0.0:5001/number_odd_or_even/;
+         }
+
+
+         # Serves the route /airbnb-dynamic/number_odd_or_even/ from the project Airbnb_clone_v2 (Task: - 3-app_server-nginx_config)
+         # proxy_params(To ensure the url serves any parameters passed to it as long as the script is configured to return a value for it)
+         location /api/ {
+                include proxy_params;
+                proxy_pass proxy_pass http://0.0.0.0:5002/api/;
+         }
+
+
+         root /var/www/html;
+
+         # Add index.php to the list if you are using PHP
+         index index.html index.htm index.nginx-debian.html;
+
+         server_name _;
+
+         location /hbnb_static/ {
+                 alias /data/web_static/current/;
+         }
+
+         # Customize HTTP response header
+         add_header X-Served-By $HOSTNAME;
+
+         # Sets 404 error page
+         error_page 404 /custom_404.html;
+
+         # rewrite directive
+         rewrite ^/redirect_me / permanent;
+
+         location / {
+                 # First attempt to serve request as file, then
+                 # as directory, then fall back to displaying a 404.
+                 try_files $uri $uri/ =404;
+         }
+}
