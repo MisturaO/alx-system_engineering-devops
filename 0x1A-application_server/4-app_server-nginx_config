@@ -16,6 +16,7 @@ server {
 
 
          # Serves the route /airbnb-dynamic/number_odd_or_even/ from the project Airbnb_clone_v2 (Task: - 3-app_server-nginx_config)
+         # proxy_params(To ensure the url serves any parameters passed to it as long as the script is configured to return a value for it)
          location /airbnb-dynamic/number_odd_or_even/ {
                 include proxy params;
                 proxy_pass http://0.0.0.0:5001/number_odd_or_even/;
@@ -23,10 +24,8 @@ server {
 
 
          # Serves the route /airbnb-dynamic/number_odd_or_even/ from the project Airbnb_clone_v2 (Task: - 3-app_server-nginx_config)
-         # proxy_params(To ensure the url serves any parameters passed to it as long as the script is configured to return a value for it)
-         location /api/ {
-                include proxy_params;
-                proxy_pass proxy_pass http://0.0.0.0:5002/api/;
+         location /api {
+                proxy_pass proxy_pass http://0.0.0.0:5002/api;
          }
 
 
